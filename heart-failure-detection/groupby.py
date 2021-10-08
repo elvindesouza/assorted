@@ -1,9 +1,10 @@
 from time import sleep
+from Pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-df = pd.read_csv("/home/elvin/Downloads/heart_failure.csv")
+df = pd.read_csv(str(Path(__file__).parent.absolute() / "heart_failure.csv"))
 
 
 print(df.columns)

@@ -21,17 +21,33 @@ columns = [
 df = pd.read_csv(
     str(Path(__file__).parent.absolute() / "heart_failure.csv"), usecols=columns
 )
-print(df)
-
 description = df.describe()
-print(description)
 
+output_list = [
+    df,
+    description,
+    df.head,
+    df.tail,
+    df.shape,
+    df.index,
+    df.columns,
+    df.info,
+    df.values,
+    df.size,
+    df.ndim,
+    df.dtypes,
+    df.axes,
+    df.empty,
+]
+
+for item in output_list:
+    print(item)
 # df.plot(kind='bar', x="anaemia", y="DEATH_EVENT")
 # make async KeyboardInt
-cols = df.columns.values.tolist()
-for col in cols:
-    df[col].value_counts().plot(
-        kind="pie", title=f"Records in dataset in which the person had {col}"
-    )
+# cols = df.columns.values.tolist()
+col = 3
+df[columns[col]].value_counts().plot(
+    kind="pie", title=f"Records in dataset in which the person had {columns[col]}"
+)
 
 plt.show()
